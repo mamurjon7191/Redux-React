@@ -5,8 +5,14 @@ const songList = [
   { name: "Usa", time: "2:42", authhor: "Hotamov" },
 ];
 
-const songListReducer = (history = [], form) => {
-  return songList;
+const songListReducer = (
+  history = [{ name: "Uzbek", time: "2:22", authhor: "Ibragimov" }],
+  form
+) => {
+  if (form.type == "Add") {
+    return (history = [...history, form.payload]);
+  }
+  return history;
 };
 
 export default songListReducer;

@@ -1,10 +1,14 @@
 import { type } from "@testing-library/user-event/dist/type";
 
-const selectSongAction = (obj) => {
+export const selectSongAction = (obj) => {
   return {
     type: "Selected",
     payload: obj,
   };
 };
-
-export default selectSongAction;
+export const addSongAction = function (form) {
+  return {
+    type: "Add",
+    payload: form,
+  };
+};

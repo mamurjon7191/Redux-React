@@ -1,9 +1,10 @@
 import React from "react";
 import { connect } from "react-redux"; // provider bilan connect qilish uchun
-import selectSongAction from "../actions";
+
+import { selectSongAction } from "../actions";
 
 const SongList = function (props) {
-  console.log(props);
+  // console.log(props);
   const renderHtml = function () {
     return props.songListReducer.map((val) => {
       return (
@@ -22,7 +23,8 @@ const SongList = function (props) {
               <div
                 className="ui basic green button"
                 onClick={() => {
-                  selectSongAction(val); //bosildi action creator ishladi val kirib keldi u bizga abyect qaytarib reducerga berdi reducer statega borib yozib qoydi...
+                  // bu yerga props nuqta deb actionni nomini yozish kerak chunki agar shunoq ozini yozsak actionlar abyekt qaytaradi lekin reduserlarga olib borib kelmaydi.
+                  props.selectSongAction(val); //bosildi action creator ishladi val kirib keldi u bizga abyect qaytarib reducerga berdi reducer statega borib yozib qoydi...
                 }}
               >
                 Select
@@ -40,7 +42,9 @@ const getMyState = function (state) {
   return state;
 };
 
-export default connect(getMyState)(SongList); // high ordered function // connect borib providerdagi funksiyalarni ishlatib statega yozib keladi
+export default connect(getMyState, {
+  selectSongAction,
+})(SongList); // high ordered function // connect borib connectni ikkinchi argumentini  providerdagi funksiyalarini ishlatib statega yozib keladi
 
 //---------->>>>>>>Connectni ishlashi<<<<<<<<<<------------------\\
 
