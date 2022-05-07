@@ -1,10 +1,10 @@
 import { type } from "@testing-library/user-event/dist/type";
 
-const selectSong = (obj) => {
+const selectSongAction = (obj) => {
   return {
     type: "Selected",
     payload: obj,
   };
 };
 
-export default selectSong;
+export default selectSongAction;
